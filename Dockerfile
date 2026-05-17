@@ -1,8 +1,8 @@
 FROM python:3.11
 
-WORKDIR /Auto-Filter-Bot
+WORKDIR /test
 
-COPY . /Auto-Filter-Bot
+COPY . /test
 
 RUN pip install -r requirements.txt
 
