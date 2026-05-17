@@ -34,7 +34,7 @@ async def send_update(title, year):
     data = await get_poster(f"{title} {year}")
     if not data:
         _year = f"({year})" if year else ""
-        await temp.BOT.send_message(chat_id=UPDATES_SEND_CHANNEL, text=f"✅ New Added ✅\n\n🏷 Title: {title.title()} {_year}", reply_markup=InlineKeyboardMarkup(btn))
+        await temp.BOT.send_message(chat_id=UPDATES_SEND_CHANNEL, text=f"✅{title.title()} {_year}\n<code>⏱ {runtime} | ⭐ {rating}</code>\n\n<blockquote><b>🎙 {languages}</b></blockquote>\n<b>📽 Genre:</b> {genres}", reply_markup=InlineKeyboardMarkup(btn))
         return
     caption = script.NEW_ADDED_TEMPLATE.format(
         title=data['title'],
@@ -210,10 +210,11 @@ async def get_poster(query, bulk=False, id=False, file=None):
     title = data.get("title") or data.get("name")
 
     poster = None
-    if data.get("poster_path"):
-        poster = f"https://image.tmdb.org/t/p/original{data['poster_path']}"
+    if data.get("backdrop_path"):
+        poster = f"https://image.tmdb.org/t/p/original{data['backdrop_path']}"
 
     release_date = data.get("release_date") or data.get("first_air_date")
+
 
     genres = list_to_str([g["name"] for g in data.get("genres", [])])
 
