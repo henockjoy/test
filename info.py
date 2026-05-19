@@ -75,11 +75,11 @@ else:
     SUPPORT_GROUP = int(SUPPORT_GROUP)
 
 # MongoDB information
-DATA_DATABASE_URL = environ.get('DATA_DATABASE_URL', "mongodb+srv://henock:henock@cluster0.kfcmzyl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATA_DATABASE_URL = environ.get('DATA_DATABASE_URL', "")
 if len(DATA_DATABASE_URL) == 0:
     logger.error('DATA_DATABASE_URL is missing, exiting now')
     exit()
-FILES_DATABASE_URL = environ.get('FILES_DATABASE_URL', "mongodb+srv://henock:henock@cluster0.kfcmzyl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+FILES_DATABASE_URL = environ.get('FILES_DATABASE_URL', "")
 if len(FILES_DATABASE_URL) == 0:
     logger.error('FILES_DATABASE_URL is missing, exiting now')
     exit()
